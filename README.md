@@ -2,6 +2,8 @@
 
 This is a [Next.js](https://nextjs.org/) demo project using data from [Green Climate Fund](https://greenclimate.fund)
 
+**Note that this is a Next 13 Project using the experimental `app` folder rather than the usual `pages` structure.**
+
 ## Getting Started
 
 First, install the dependencies:
