@@ -11,6 +11,10 @@ import ResultAreasChart from '@/components/templates/ResultAreasChart'
 dayjs.extend(localizedFormat)
 
 const PageContent = ({ project }) => {
+  if (!project) {
+    return mull
+  }
+
   return (
     <>
       <Row>
@@ -56,7 +60,7 @@ const PageContent = ({ project }) => {
           <Card>
             <Card.Header>Result Areas</Card.Header>
             <Card.Body>
-              <ResultAreasChart resultAreas={project.ResultAreas} />
+              <ResultAreasChart resultAreas={project.ResultAreas || []} />
             </Card.Body>
           </Card>
         </Col>
