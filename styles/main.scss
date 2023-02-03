@@ -3,6 +3,17 @@
 
 @import 'bootstrap/scss/bootstrap';
 
+:root {
+  --raCities: #{$indigo-300};
+  --raEcosystems: #{$red-300};
+  --raEnergy: #{$green-300};
+  --raForests: #{$cyan-300};
+  --raHealth: #{$yellow-300};
+  --raInfrastructure: #{$pink-300};
+  --raLivelihoods: #{$blue-300};
+  --raTransport: #{$orange-300};
+}
+
 body {
   margin: 0;
   background: #fefefe;
@@ -27,4 +38,19 @@ body {
   dd {
     flex: 2;
   }
+}
+
+.icon-container {
+  border: 1px solid currentColor;
+  display: inline-flex;
+  width: 1.7em;
+  height: 1.7em;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  stroke: currentColor;
+  fill: currentColor;
+  font-size: 1.5em;
 }

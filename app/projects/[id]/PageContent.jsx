@@ -5,9 +5,14 @@ import localizedFormat from 'dayjs/plugin/localizedFormat'
 
 import { Badge, Card, Row, Col } from 'react-bootstrap'
 
+import DefinitionList from '@/components/modules/DefinitionList'
+import ResultAreasChart from '@/components/templates/ResultAreasChart'
+
 dayjs.extend(localizedFormat)
 
 const PageContent = ({ project }) => {
+  console.log(project)
+
   return (
     <>
       <Row>
@@ -21,24 +26,39 @@ const PageContent = ({ project }) => {
                 </Badge>
                 <Badge bg="secondary">{project.Sector} Sector</Badge>
               </div>
-              <dl className="dl--horizontal">
-                <div>
-                  <dt>Size</dt>
-                  <dd>{project.Size}</dd>
-                </div>
-                <div>
-                  <dt>Risk Category</dt>
-                  <dd>{project.RiskCategory}</dd>
-                </div>
-                <div>
-                  <dt>Start Date</dt>
-                  <dd>{dayjs(project.StartDate).format('ll')}</dd>
-                </div>
-                <div>
-                  <dt>End Date</dt>
-                  <dd>{dayjs(project.EndDate).format('ll')}</dd>
-                </div>
-              </dl>
+
+              <DefinitionList
+                items={[
+                  {
+                    title: 'Size',
+                    definition: project.Size,
+                  },
+                  { title: 'Risk Category', definition: project.RiskCategory },
+                  {
+                    title: 'Countries',
+                    definition: (project.Countries || [])
+                      .map((country) => country.CountryName)
+                      .join(', '),
+                  },
+                  {
+                    title: 'Start Date',
+                    definition: dayjs(project.StartDate).format('ll'),
+                  },
+                  {
+                    title: 'End Date',
+                    definition: dayjs(project.EndDate).format('ll'),
+                  },
+                ]}
+              />
+            </Card.Body>
+          </Card>
+        </Col>
+
+        <Col md={6}>
+          <Card>
+            <Card.Header>Result Areas</Card.Header>
+            <Card.Body>
+              <ResultAreasChart resultAreas={project.ResultAreas} />
             </Card.Body>
           </Card>
         </Col>
