@@ -11,8 +11,6 @@ async function getData(params) {
 const ProjectPage = async ({ params }) => {
   const project = await getData(params)
 
-  console.log(project)
-
   if (!project) {
     return <Page title="Project Page"></Page>
   }

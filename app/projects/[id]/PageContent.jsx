@@ -11,8 +11,6 @@ import ResultAreasChart from '@/components/templates/ResultAreasChart'
 dayjs.extend(localizedFormat)
 
 const PageContent = ({ project }) => {
-  console.log(project)
-
   return (
     <>
       <Row>
