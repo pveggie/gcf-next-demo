@@ -1,6 +1,7 @@
 import { readProject } from '@/api/controllers/projectController'
 
 import Page from '@/components/wrappers/Page'
+import PageContent from './PageContent'
 
 async function getData(params) {
   const data = await readProject(params)
@@ -22,7 +23,11 @@ const ProjectPage = async ({ params }) => {
       <span>{project.ProjectName}</span>
     </>
   )
-  return <Page title={title}></Page>
+  return (
+    <Page title={title}>
+      <PageContent project={project} />
+    </Page>
+  )
 }
 
 export default ProjectPage

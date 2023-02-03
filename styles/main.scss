@@ -7,3 +7,24 @@ body {
   margin: 0;
   background: #fefefe;
 }
+
+.dl--horizontal {
+  div {
+    display: flex;
+  }
+
+  dt,
+  dd {
+    display: inline-block;
+  }
+
+  dt {
+    font-weight: $font-weight-bold;
+    margin-right: $spacer;
+    flex: 1;
+  }
+
+  dd {
+    flex: 2;
+  }
+}

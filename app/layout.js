@@ -1,14 +1,11 @@
-'use client'
 import { Roboto } from '@next/font/google'
 
-import { Box, Container } from '@mui/system'
-
-import Header from '@/components/templates/Header'
+import { SiteWrapper } from '@/components/wrappers/Site'
 
 import '@/styles/main.scss'
 
 const roboto = Roboto({
-  weight: '400',
+  weight: ['400', '700'],
   subsets: ['latin'],
 })
 
@@ -21,20 +18,7 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body className={roboto.className}>
-        <Box
-          sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
-        >
-          <Header />
-          <Box
-            as="main"
-            sx={{
-              height: '100%',
-              flexGrow: 1,
-            }}
-          >
-            <Container sx={{ height: '100%' }}>{children}</Container>
-          </Box>
-        </Box>
+        <SiteWrapper>{children}</SiteWrapper>
       </body>
     </html>
   )
