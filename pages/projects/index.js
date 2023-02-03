@@ -1,5 +1,7 @@
+import NextLink from 'next/link'
+
 import { readProjects } from '@/api/controllers/projectController'
-import { Typography, Box } from '@mui/material'
+import { Button, Typography, Box } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 
 const ProjectsPage = ({ data }) => {
@@ -27,6 +29,23 @@ const ProjectsPage = ({ data }) => {
       width: 200,
       valueGetter: (params) => {
         return params.row.Entities.map((entity) => entity.Acronym).join(', ')
+      },
+    },
+    {
+      field: 'buttonLink',
+      headerName: 'Details',
+      width: 200,
+      sortable: false,
+      valueGetter: (params) => {
+        const id = params.row.ProjectsID
+        return `/projects/${id}`
+      },
+      renderCell: ({ value }) => {
+        return (
+          <Button className="text-center" as={NextLink} href={value}>
+            View
+          </Button>
+        )
       },
     },
   ]
