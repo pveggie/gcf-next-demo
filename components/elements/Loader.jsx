@@ -1,3 +1,4 @@
+'use client'
 import { Box, LinearProgress, Typography } from '@mui/material'
 
 const Loader = () => {

@@ -1,4 +1,3 @@
-'use client'
 import Loader from '@/components/elements/Loader'
 
 const Loading = () => {
