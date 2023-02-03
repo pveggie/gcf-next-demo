@@ -9,12 +9,7 @@ const Header = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Test Next App
           </Typography>
-          <Button
-            className=""
-            color="inherit"
-            component={NextLink}
-            href="/projects"
-          >
+          <Button className="" color="inherit" component={NextLink} href="/">
             Projects
           </Button>
         </Toolbar>

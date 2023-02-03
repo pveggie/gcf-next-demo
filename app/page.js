@@ -1,19 +1,22 @@
-'use client'
-import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { readProjects } from '@/api/controllers/projectController'
 
-import Loader from '@/components/elements/Loader'
+import Page from '@/components/wrappers/Page'
+import ProjectsDataGrid from '@/components/templates/projects/ProjectsDataGrid'
 
-const Home = () => {
-  const router = useRouter()
+export const getData = async () => {
+  const data = await readProjects()
 
-  router.push('/projects')
-
-  useEffect(() => {
-    return () => {}
-  })
-
-  return <Loader />
+  return data
 }
 
-export default Home
+const ProjectsPage = async ({ data }) => {
+  const projects = await getData()
+
+  return (
+    <Page title="Projects">
+      <ProjectsDataGrid rows={projects} />
+    </Page>
+  )
+}
+
+export default ProjectsPage

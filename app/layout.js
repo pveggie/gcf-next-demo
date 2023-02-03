@@ -3,7 +3,7 @@ import { Roboto } from '@next/font/google'
 
 import { Box, Container } from '@mui/system'
 
-import Header from '@/components/layout/Header'
+import Header from '@/components/templates/Header'
 
 import '@/styles/main.scss'
 

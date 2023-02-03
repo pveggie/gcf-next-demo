@@ -1,12 +1,9 @@
+'use client'
 import NextLink from 'next/link'
+import { Button, Box } from '@mui/material'
+import ClientDataGrid from '@/components/modules/ClientDataGrid'
 
-import { readProjects } from '@/api/controllers/projectController'
-import { Button, Typography, Box } from '@mui/material'
-import { DataGrid } from '@mui/x-data-grid'
-
-const ProjectsPage = ({ data }) => {
-  console.log(data)
-
+const ProjectsDataGrid = ({ rows }) => {
   const columns = [
     { field: 'ProjectsID', headerName: 'ID', width: 70 },
     { field: 'ApprovedRef', headerName: 'Ref', width: 130 },
@@ -16,7 +13,6 @@ const ProjectsPage = ({ data }) => {
     {
       field: 'Countries',
       headerName: 'Countries',
-      width: 250,
       valueGetter: (params) => {
         return params.row.Countries.map((country) => country.CountryName).join(
           ', '
@@ -34,7 +30,7 @@ const ProjectsPage = ({ data }) => {
     {
       field: 'buttonLink',
       headerName: 'Details',
-      width: 200,
+      width: 80,
       sortable: false,
       valueGetter: (params) => {
         const id = params.row.ProjectsID
@@ -51,30 +47,15 @@ const ProjectsPage = ({ data }) => {
   ]
 
   return (
-    <>
-      <Typography variant="h1" className={'h1'}>
-        Projects
-      </Typography>
-      <br />
-      <br />
-      <Box sx={{ height: 550 }}>
-        <DataGrid
-          rows={data}
-          columns={columns}
-          getRowId={(row) => row.ProjectsID}
-          autoPageSize
-        />
-      </Box>
-    </>
+    <Box sx={{ height: 500 }}>
+      <ClientDataGrid
+        rows={rows}
+        columns={columns}
+        getRowId={(row) => row.ProjectsID}
+        autoPageSize
+      />
+    </Box>
   )
 }
 
-export default ProjectsPage
-
-export const getStaticProps = async () => {
-  const data = await readProjects()
-
-  return {
-    props: { data },
-  }
-}
+export default ProjectsDataGrid
