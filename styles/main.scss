@@ -19,6 +19,12 @@ body {
   background: #fefefe;
 }
 
+.client-data-grid {
+  .MuiTablePagination-root p {
+    margin-bottom: 0;
+  }
+}
+
 .dl--horizontal {
   div {
     display: flex;
